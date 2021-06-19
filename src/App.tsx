@@ -3,6 +3,7 @@ import ReactModal from 'react-modal';
 import { Dashboard } from './components/Dashboard';
 import { Header } from './components/Header';
 import { NewRecipeModal } from './components/NewRecipeModal';
+import { RecipesProvider } from './RecipesContext';
 
 ReactModal.setAppElement("#root");
 
@@ -17,11 +18,11 @@ function App() {
   }
 
   return (
-    <>
+    <RecipesProvider>
       <Header onOpenNewRecipeModal={handleOpenNewRecipeModal}/>
       <Dashboard/>
       <NewRecipeModal isOpen={isNewRecipeModalOpen} onRequestClose={handleCloseNewRecipeModal}/>
-    </>
+    </RecipesProvider>
   );
 }
 

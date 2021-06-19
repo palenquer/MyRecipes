@@ -1,6 +1,7 @@
-import { FormEvent } from "react";
+import { FormEvent, useContext, useState } from "react";
 import Modal from "react-modal";
 import closeImg from "../assets/close.svg";
+import { RecipesContext } from "../RecipesContext";
 
 interface NewRecipeModalProps {
   isOpen: boolean;
@@ -11,8 +12,26 @@ export function NewRecipeModal({
   isOpen,
   onRequestClose,
 }: NewRecipeModalProps) {
+  const { createRecipe } = useContext(RecipesContext);
+
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [time, setTime] = useState(1);
+  const [portions, setPortions] = useState(1);
+  const [ingredients, setIngredients] = useState("");
+  const [instructions, setInstructions] = useState("");
+
   function handleCreateNewRecipe(event: FormEvent) {
     event.preventDefault();
+
+    createRecipe({
+      title,
+      description,
+      time,
+      portions,
+      ingredients,
+      instructions,
+    });
   }
 
   return (
@@ -42,26 +61,38 @@ export function NewRecipeModal({
           className="w-full px-6 h-12 rounded bg-gray-100 border border-gray-300 placeholder-gray-500"
           type="text"
           placeholder="Title"
+          onChange={(event) => setTitle(event.target.value)}
         />
+        <input
+          className="w-full px-6 h-12 rounded bg-gray-100 border border-gray-300 placeholder-gray-500"
+          type="text"
+          placeholder="Description"
+          onChange={(event) => setDescription(event.target.value)}
+        />
+
         <div className="grid grid-cols-2 gap-2">
           <input
             className="w-full px-6 h-12 rounded bg-gray-100 border border-gray-300 placeholder-gray-500"
             type="number"
             placeholder="Time"
+            onChange={(event) => setTime(Number(event.target.value))}
           />
           <input
             className="w-full px-6 h-12 rounded bg-gray-100 border border-gray-300 placeholder-gray-500"
             type="number"
             placeholder="Portions"
+            onChange={(event) => setPortions(Number(event.target.value))}
           />
         </div>
         <textarea
           className="w-full px-6 md:h-40 rounded bg-gray-100 border border-gray-300 placeholder-gray-500 py-4 resize-none"
           placeholder="Ingredients"
+          onChange={(event) => setIngredients(event.target.value)}
         />
         <textarea
           className="w-full px-6 md:h-40 rounded bg-gray-100 border border-gray-300 placeholder-gray-500 py-4 resize-none"
           placeholder="Instructions"
+          onChange={(event) => setInstructions(event.target.value)}
         />
         <button
           className="w-full px-6 h-16 bg-yellow-500 text-white rounded border-0 mt-4 font-semibold transition duration-300 hover:bg-yellow-600"
