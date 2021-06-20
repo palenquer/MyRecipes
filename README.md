@@ -44,8 +44,5 @@ Esse projeto tem o intúito de melhorar minhas habilidades com React, Typescript
 
 Para rodar o projeto, é preciso a instalação do node na sua máquina.
 
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+* https://nodejs.org/en/
 
