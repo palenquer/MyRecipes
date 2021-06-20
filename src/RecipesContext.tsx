@@ -12,6 +12,7 @@ interface Recipe {
 }
 
 interface RecipeInput {
+  id: number;
   title: string;
   time: number;
   portions: number;
@@ -22,7 +23,7 @@ interface RecipeInput {
 
 interface RecipesContextData {
   recipes: Recipe[];
-  createRecipe: (recipe: RecipeInput) => void;
+  createRecipe: (recipe: RecipeInput) => Promise<void>;
 }
 
 interface RecipesProviderProps {
@@ -43,7 +44,11 @@ export function RecipesProvider({ children }: RecipesProviderProps) {
   }, []);
 
   async function createRecipe(recipeInput: RecipeInput) {
-    await api.post("/recipes", recipeInput);
+    const response = await api.post("/recipes", recipeInput);
+
+    const recipe = JSON.parse(response.config.data);
+
+    setRecipes([...recipes, recipe]);
   }
 
   return (

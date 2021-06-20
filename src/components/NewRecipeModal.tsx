@@ -12,12 +12,13 @@ export function NewRecipeModal({
   isOpen,
   onRequestClose,
 }: NewRecipeModalProps) {
-  const { createRecipe } = useContext(RecipesContext);
+  const { recipes, createRecipe } = useContext(RecipesContext);
 
+  const [id, setId] = useState(0)
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [time, setTime] = useState(1);
-  const [portions, setPortions] = useState(1);
+  const [time, setTime] = useState(0);
+  const [portions, setPortions] = useState(0);
   const [ingredients, setIngredients] = useState("");
   const [instructions, setInstructions] = useState("");
 
@@ -25,6 +26,7 @@ export function NewRecipeModal({
     event.preventDefault();
 
     createRecipe({
+      id,
       title,
       description,
       time,
@@ -32,6 +34,11 @@ export function NewRecipeModal({
       ingredients,
       instructions,
     });
+
+    setTitle("");
+    setDescription("");
+    setIngredients("");
+    setInstructions("");
   }
 
   return (
@@ -61,12 +68,14 @@ export function NewRecipeModal({
           className="w-full px-6 h-12 rounded bg-gray-100 border border-gray-300 placeholder-gray-500"
           type="text"
           placeholder="Title"
+          value={title}
           onChange={(event) => setTitle(event.target.value)}
         />
         <input
           className="w-full px-6 h-12 rounded bg-gray-100 border border-gray-300 placeholder-gray-500"
           type="text"
           placeholder="Description"
+          value={description}
           onChange={(event) => setDescription(event.target.value)}
         />
 
@@ -87,16 +96,19 @@ export function NewRecipeModal({
         <textarea
           className="w-full px-6 md:h-40 rounded bg-gray-100 border border-gray-300 placeholder-gray-500 py-4 resize-none"
           placeholder="Ingredients"
+          value={ingredients}
           onChange={(event) => setIngredients(event.target.value)}
         />
         <textarea
           className="w-full px-6 md:h-40 rounded bg-gray-100 border border-gray-300 placeholder-gray-500 py-4 resize-none"
           placeholder="Instructions"
+          value={instructions}
           onChange={(event) => setInstructions(event.target.value)}
         />
         <button
           className="w-full px-6 h-16 bg-yellow-500 text-white rounded border-0 mt-4 font-semibold transition duration-300 hover:bg-yellow-600"
           type="submit"
+          onClick={() => setId(recipes.length + 1)}
         >
           Create
         </button>
