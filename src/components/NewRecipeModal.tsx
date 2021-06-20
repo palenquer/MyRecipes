@@ -39,6 +39,8 @@ export function NewRecipeModal({
     setDescription("");
     setIngredients("");
     setInstructions("");
+
+    onRequestClose();
   }
 
   return (

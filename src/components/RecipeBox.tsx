@@ -9,7 +9,7 @@ interface RecipeBoxProps {
 
 export function RecipeBox({ title, time, portions }: RecipeBoxProps) {
   return (
-    <div className="flex items-center justify-between bg-gray-200 rounded py-2 px-4 h-20 max-h-20">
+    <div className="flex items-center justify-between bg-gray-200 rounded py-2 px-4 h-20 max-h-20 cursor-pointer transition duration-300 hover:bg-yellow-500 hover:text-white">
       <h1 className="text-lg">{title}</h1>
 
       <div className="flex flex-col justify-between h-full items-center text-sm">
