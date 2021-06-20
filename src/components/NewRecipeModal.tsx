@@ -1,7 +1,7 @@
 import { FormEvent, useContext, useState } from "react";
 import Modal from "react-modal";
-import closeImg from "../assets/close.svg";
 import { RecipesContext } from "../RecipesContext";
+import { XIcon } from "@heroicons/react/solid"
 
 interface NewRecipeModalProps {
   isOpen: boolean;
@@ -55,7 +55,7 @@ export function NewRecipeModal({
         type="button"
         onClick={onRequestClose}
       >
-        <img src={closeImg} alt="Fechar Modal" />
+        <XIcon className="w-10 h-10 text-gray-500" />
       </button>
 
       <form
