@@ -38,17 +38,25 @@ export function RecipesProvider({ children }: RecipesProviderProps) {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
 
   useEffect(() => {
-    api.get("/recipes").then((response) => {
-      setRecipes(response.data.recipes);
-    });
-  }, []);
+    const storagedRecipes = localStorage.getItem("@my-recipes");
+
+    if (storagedRecipes) {
+      setRecipes(JSON.parse(storagedRecipes));
+      console.log(JSON.parse(storagedRecipes));
+      return
+    } 
+      api.get("/recipes").then((response) => {
+        setRecipes(response.data.recipes);
+      });
+    }
+  , []);
 
   async function createRecipe(recipeInput: RecipeInput) {
     const response = await api.post("/recipes", recipeInput);
-
     const recipe = JSON.parse(response.config.data);
 
     setRecipes([...recipes, recipe]);
+    localStorage.setItem("@my-recipes", JSON.stringify([...recipes, recipe]));
   }
 
   return (

@@ -33,7 +33,7 @@ export function NewRecipeModal({
       portions,
       ingredients,
       instructions,
-    });
+    });  
 
     setTitle("");
     setDescription("");
@@ -110,7 +110,7 @@ export function NewRecipeModal({
         <button
           className="w-full px-6 h-16 bg-yellow-500 text-white rounded border-0 mt-4 font-semibold transition duration-300 hover:bg-yellow-600"
           type="submit"
-          onClick={() => setId(recipes.length + 1)}
+          onClick={() => setId(recipes.length)}
         >
           Create
         </button>

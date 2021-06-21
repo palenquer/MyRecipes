@@ -24,6 +24,7 @@ export const handlers = [
     "http://localhost:3000/recipes",
     (req, res, ctx) => {
       const { recipes } = req.body;
+
       return res(ctx.status(201), ctx.json({ recipes }));
     }
   ),
@@ -31,12 +32,13 @@ export const handlers = [
   rest.get<RecipesRequestBody, RecipesResponseBody, RecipesRequestParams>(
     "http://localhost:3000/recipes",
     (req, res, ctx) => {
+
       return res(
         ctx.status(200),
         ctx.json({
           recipes: [
             {
-              id: 1,
+              id: 0,
               title: "Sopa de Caramujo",
               time: 2,
               portions: 4,
@@ -47,7 +49,7 @@ export const handlers = [
               ingredients: "Caramujo, Cogumelo, Água",
             },
             {
-              id: 2,
+              id: 1,
               title: "Churrasco de tatu",
               time: 1,
               portions: 2,
