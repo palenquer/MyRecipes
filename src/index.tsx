@@ -3,15 +3,11 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import "./styles/tailwind.css";
 
-if (process.env.NODE_ENV === "development") {
-  const { worker } = require("./mocks/browser");
-  
-  worker.start({
-    onUnhandledRequest: 'error',
-  });
+const { worker } = require("./mocks/browser");
 
-  worker.printHandlers()
-}
+worker.start({
+  onUnhandledRequest: "error",
+});
 
 ReactDOM.render(
   <React.StrictMode>
