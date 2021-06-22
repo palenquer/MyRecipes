@@ -31,7 +31,7 @@ export function NewRecipeModal({
       return;
     }
     if (description.length > 100) {
-      toast.error("Title cannot exceed 100 characters");
+      toast.error("description cannot exceed 100 characters");
       return;
     }
     if (time < 1 || time > 999) {
