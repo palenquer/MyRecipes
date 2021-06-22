@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState, ReactNode } from "react";
 import { api } from "./services/api";
+import { toast } from "react-toastify";
 
 interface Recipe {
   id: number;
@@ -42,14 +43,12 @@ export function RecipesProvider({ children }: RecipesProviderProps) {
 
     if (storagedRecipes) {
       setRecipes(JSON.parse(storagedRecipes));
-      console.log(JSON.parse(storagedRecipes));
-      return
-    } 
-      api.get("/recipes").then((response) => {
-        setRecipes(response.data.recipes);
-      });
+      return;
     }
-  , []);
+    api.get("/recipes").then((response) => {
+      setRecipes(response.data.recipes);
+    });
+  }, []);
 
   async function createRecipe(recipeInput: RecipeInput) {
     const response = await api.post("/recipes", recipeInput);
@@ -57,6 +56,7 @@ export function RecipesProvider({ children }: RecipesProviderProps) {
 
     setRecipes([...recipes, recipe]);
     localStorage.setItem("@my-recipes", JSON.stringify([...recipes, recipe]));
+    toast.info(`${recipe.title} recipe created`);
   }
 
   return (

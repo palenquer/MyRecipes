@@ -1,7 +1,8 @@
 import { FormEvent, useContext, useState } from "react";
 import Modal from "react-modal";
 import { RecipesContext } from "../RecipesContext";
-import { XIcon } from "@heroicons/react/solid"
+import { XIcon } from "@heroicons/react/solid";
+import { toast } from "react-toastify";
 
 interface NewRecipeModalProps {
   isOpen: boolean;
@@ -14,7 +15,7 @@ export function NewRecipeModal({
 }: NewRecipeModalProps) {
   const { recipes, createRecipe } = useContext(RecipesContext);
 
-  const [id, setId] = useState(0)
+  const [id, setId] = useState(0);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [time, setTime] = useState(0);
@@ -25,6 +26,31 @@ export function NewRecipeModal({
   function handleCreateNewRecipe(event: FormEvent) {
     event.preventDefault();
 
+    if (title.length > 20 || title.length < 3) {
+      toast.error("title must be between 3 and 20 characters");
+      return;
+    }
+    if (description.length > 100) {
+      toast.error("description must be between 0 and 100 characters");
+      return;
+    }
+    if (time < 1) {
+      toast.error("minutes must have at least 1");
+      return;
+    }
+    if (portions < 1) {
+      toast.error("portions must have at least 1");
+      return;
+    }
+    if (ingredients.length > 100) {
+      toast.error("ingredients must be between 0 and 100 characters");
+      return;
+    }
+    if (instructions.length > 100) {
+      toast.error("ingredients must be between 0 and 100 characters");
+      return;
+    }
+
     createRecipe({
       id,
       title,
@@ -33,7 +59,7 @@ export function NewRecipeModal({
       portions,
       ingredients,
       instructions,
-    });  
+    });
 
     setTitle("");
     setDescription("");
@@ -81,19 +107,25 @@ export function NewRecipeModal({
           onChange={(event) => setDescription(event.target.value)}
         />
 
-        <div className="grid grid-cols-2 gap-2">
-          <input
-            className="w-full px-6 h-12 rounded bg-gray-100 border border-gray-300 placeholder-gray-500"
-            type="number"
-            placeholder="Time"
-            onChange={(event) => setTime(Number(event.target.value))}
-          />
-          <input
-            className="w-full px-6 h-12 rounded bg-gray-100 border border-gray-300 placeholder-gray-500"
-            type="number"
-            placeholder="Portions"
-            onChange={(event) => setPortions(Number(event.target.value))}
-          />
+        <div className="grid grid-cols-2 grid-rows-1">
+          <div className="flex items-center gap-2">
+            <input
+              className="w-16 px-2 h-12 rounded bg-gray-100 border border-gray-300 placeholder-gray-500"
+              type="number"
+              value={time}
+              onChange={(event) => setTime(Number(event.target.value))}
+            />
+            <span>minutes</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <input
+              className="w-16 px-2 h-12 rounded bg-gray-100 border border-gray-300 placeholder-gray-500"
+              type="number"
+              value={portions}
+              onChange={(event) => setPortions(Number(event.target.value))}
+            />
+            <span>portions</span>
+          </div>
         </div>
         <textarea
           className="w-full px-6 md:h-40 rounded bg-gray-100 border border-gray-300 placeholder-gray-500 py-4 resize-none"

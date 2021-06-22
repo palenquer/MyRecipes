@@ -15,7 +15,7 @@ export function RecipeBox({ title, time, portions }: RecipeBoxProps) {
       <div className="flex flex-col justify-between h-full items-center text-sm">
         <div className="flex gap-1 items-center w-full justify-between">
           <ClockIcon className="h-6 w-6 text-gray-600 group-hover:text-white" />
-          <h2>{time}h</h2>
+          <h2>{time}m</h2>
         </div>
 
         <div className="flex gap-1 items-center w-full">
