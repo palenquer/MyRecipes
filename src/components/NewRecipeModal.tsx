@@ -27,27 +27,27 @@ export function NewRecipeModal({
     event.preventDefault();
 
     if (title.length > 20 || title.length < 3) {
-      toast.error("title must be between 3 and 20 characters");
+      toast.error("Title must have at least 3 characters and cannot exceed 20 characters");
       return;
     }
     if (description.length > 100) {
-      toast.error("description must be between 0 and 100 characters");
+      toast.error("Title cannot exceed 100 characters");
       return;
     }
     if (time < 1 || time > 999) {
-      toast.error("minutes must have at least 1 and less than 999");
+      toast.error("Minutes must have at least 1 and cannot exceed 999");
       return;
     }
     if (portions < 1 || portions > 999) {
-      toast.error("portions must have at least 1 and less than 999");
+      toast.error("Portions must have at least 1 and cannot exceed 999");
       return;
     }
     if (ingredients.length > 100) {
-      toast.error("ingredients must be between 0 and 100 characters");
+      toast.error("Ingredients cannot exceed 100 characters");
       return;
     }
     if (instructions.length > 100) {
-      toast.error("ingredients must be between 0 and 100 characters");
+      toast.error("Instructions cannot exceed 100 characters");
       return;
     }
 
