@@ -34,12 +34,12 @@ export function NewRecipeModal({
       toast.error("description must be between 0 and 100 characters");
       return;
     }
-    if (time < 1) {
-      toast.error("minutes must have at least 1");
+    if (time < 1 || time > 999) {
+      toast.error("minutes must have at least 1 and less than 999");
       return;
     }
-    if (portions < 1) {
-      toast.error("portions must have at least 1");
+    if (portions < 1 || portions > 999) {
+      toast.error("portions must have at least 1 and less than 999");
       return;
     }
     if (ingredients.length > 100) {
