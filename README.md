@@ -20,6 +20,7 @@ Esse projeto tem o intúito de melhorar minhas habilidades com React, Typescript
 * [TailwindCSS](https://tailwindcss.com)
 * [MSWJS](https://mswjs.io)
 * [Axios](https://www.npmjs.com/package/axios)
+* [ReactRouter](https://reactrouter.com)
 * [heroicons](https://heroicons.com)
 
 ## Inicializando o Projeto
