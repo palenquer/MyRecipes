@@ -3,7 +3,7 @@ import ReactModal from "react-modal";
 import { Dashboard } from "./components/Dashboard";
 import { Header } from "./components/Header";
 import { NewRecipeModal } from "./components/NewRecipeModal";
-import { RecipesProvider } from "./RecipesContext";
+import { RecipesProvider } from "./hooks/useRecipes";
 import { ToastContainer } from "react-toastify";
 
 

@@ -1,8 +1,8 @@
-import { FormEvent, useContext, useState } from "react";
+import { FormEvent, useState } from "react";
 import Modal from "react-modal";
-import { RecipesContext } from "../RecipesContext";
 import { XIcon } from "@heroicons/react/solid";
 import { toast } from "react-toastify";
+import { useRecipes } from "../hooks/useRecipes";
 
 interface NewRecipeModalProps {
   isOpen: boolean;
@@ -13,7 +13,7 @@ export function NewRecipeModal({
   isOpen,
   onRequestClose,
 }: NewRecipeModalProps) {
-  const { recipes, createRecipe } = useContext(RecipesContext);
+  const { recipes, createRecipe } = useRecipes();
 
   const [id, setId] = useState(0);
   const [title, setTitle] = useState("");

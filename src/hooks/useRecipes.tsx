@@ -1,5 +1,5 @@
-import { createContext, useEffect, useState, ReactNode } from "react";
-import { api } from "./services/api";
+import { createContext, useEffect, useState, ReactNode, useContext } from "react";
+import { api } from "../services/api";
 import { toast } from "react-toastify";
 
 interface Recipe {
@@ -31,7 +31,7 @@ interface RecipesProviderProps {
   children: ReactNode;
 }
 
-export const RecipesContext = createContext<RecipesContextData>(
+const RecipesContext = createContext<RecipesContextData>(
   {} as RecipesContextData
 );
 
@@ -64,4 +64,10 @@ export function RecipesProvider({ children }: RecipesProviderProps) {
       {children}
     </RecipesContext.Provider>
   );
+}
+
+export function useRecipes() {
+  const context = useContext(RecipesContext);
+
+  return context;
 }

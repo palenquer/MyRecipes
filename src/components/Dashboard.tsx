@@ -1,9 +1,8 @@
-import { useContext } from "react";
-import { RecipesContext } from "../RecipesContext";
+import { useRecipes } from "../hooks/useRecipes";
 import { RecipeBox } from "./RecipeBox";
 
 export function Dashboard() {
-  const { recipes } = useContext(RecipesContext);
+  const { recipes } = useRecipes();
 
   return (
     <main className="container mx-auto h-full">
