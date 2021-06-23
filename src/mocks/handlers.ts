@@ -17,7 +17,9 @@ interface RecipesResponseBody {
   recipes: RecipeProps[];
 }
 
-interface RecipesRequestParams {}
+interface RecipesRequestParams {
+  recipeId: number;
+}
 
 export const handlers = [
   rest.post<RecipesRequestBody, RecipesResponseBody, RecipesRequestParams>(

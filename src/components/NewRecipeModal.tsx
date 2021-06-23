@@ -18,8 +18,8 @@ export function NewRecipeModal({
   const [id, setId] = useState(0);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [time, setTime] = useState(0);
-  const [portions, setPortions] = useState(0);
+  const [time, setTime] = useState(1);
+  const [portions, setPortions] = useState(1);
   const [ingredients, setIngredients] = useState("");
   const [instructions, setInstructions] = useState("");
 
@@ -27,7 +27,9 @@ export function NewRecipeModal({
     event.preventDefault();
 
     if (title.length > 20 || title.length < 3) {
-      toast.error("Title must have at least 3 characters and cannot exceed 20 characters");
+      toast.error(
+        "Title must have at least 3 characters and cannot exceed 20 characters"
+      );
       return;
     }
     if (description.length > 100) {
