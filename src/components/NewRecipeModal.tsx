@@ -73,7 +73,7 @@ export function NewRecipeModal({
 
   return (
     <Modal
-      className="w-11/12 md:w-full max-w-3xl bg-gray-100 md:p-12 relative rounded-md"
+      className="w-11/12 max-w-2xl bg-gray-100 relative rounded-md z-10 p-4 overflow-auto"
       overlayClassName="react-modal-overlay"
       isOpen={isOpen}
       onRequestClose={onRequestClose}
@@ -130,13 +130,13 @@ export function NewRecipeModal({
           </div>
         </div>
         <textarea
-          className="w-full px-6 md:h-40 rounded bg-gray-100 border border-gray-300 placeholder-gray-500 py-4 resize-none"
+          className="w-full px-6 rounded bg-gray-100 border border-gray-300 placeholder-gray-500 py-4 resize-none"
           placeholder="Ingredients"
           value={ingredients}
           onChange={(event) => setIngredients(event.target.value)}
         />
         <textarea
-          className="w-full px-6 md:h-40 rounded bg-gray-100 border border-gray-300 placeholder-gray-500 py-4 resize-none"
+          className="w-full px-6 rounded bg-gray-100 border border-gray-300 placeholder-gray-500 py-4 resize-none"
           placeholder="Instructions"
           value={instructions}
           onChange={(event) => setInstructions(event.target.value)}
