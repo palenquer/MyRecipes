@@ -32,8 +32,8 @@ export function NewRecipeModal({
       );
       return;
     }
-    if (description.length > 100) {
-      toast.error("description cannot exceed 100 characters");
+    if (description.length > 200) {
+      toast.error("description cannot exceed 200 characters");
       return;
     }
     if (time < 1 || time > 999) {
@@ -44,12 +44,12 @@ export function NewRecipeModal({
       toast.error("Portions must have at least 1 and cannot exceed 10");
       return;
     }
-    if (ingredients.length > 100) {
-      toast.error("Ingredients cannot exceed 100 characters");
+    if (ingredients.length > 200) {
+      toast.error("Ingredients cannot exceed 200 characters");
       return;
     }
-    if (instructions.length > 100) {
-      toast.error("Instructions cannot exceed 100 characters");
+    if (instructions.length > 200) {
+      toast.error("Instructions cannot exceed 200 characters");
       return;
     }
 
