@@ -26,9 +26,9 @@ export function NewRecipeModal({
   function handleCreateNewRecipe(event: FormEvent) {
     event.preventDefault();
 
-    if (title.length > 20 || title.length < 3) {
+    if (title.length > 50 || title.length < 3) {
       toast.error(
-        "Title must have at least 3 characters and cannot exceed 20 characters"
+        "Title must have at least 3 characters and cannot exceed 50 characters"
       );
       return;
     }
