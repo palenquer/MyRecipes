@@ -73,7 +73,7 @@ export function NewRecipeModal({
 
   return (
     <Modal
-      className="w-full h-full max-w-2xl max-h-modal bg-gray-100 relative rounded-md z-10 p-4 overflow-auto "
+      className="w-11/12 md:w-full h-96 sm:h-full max-w-2xl sm:max-h-modal bg-gray-100 rounded-md z-10 p-4 overflow-auto "
       overlayClassName="react-modal-overlay"
       isOpen={isOpen}
       onRequestClose={onRequestClose}
@@ -117,7 +117,7 @@ export function NewRecipeModal({
               value={time}
               onChange={(event) => setTime(Number(event.target.value))}
             />
-            <span>minutes</span>
+            <span>min</span>
           </div>
           <div className="flex items-center gap-2">
             <input

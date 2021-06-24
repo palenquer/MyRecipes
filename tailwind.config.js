@@ -3,7 +3,7 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     maxHeight: {
-      'modal': '600px'
+      'modal': '650px'
      },
     fontFamily: {
       'mont': ['Montserrat', 'sans-serif'],

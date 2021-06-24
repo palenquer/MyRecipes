@@ -16,7 +16,7 @@ export function Recipe() {
       {recipes
         .filter((recipe) => recipe.id === Number(id))
         .map((filteredRecipe) => (
-          <section className="p-4 md:py-5 md:px-20 xl:py-10 xl:px-40 bg-white">
+          <section key={filteredRecipe.id} className="p-4 md:py-5 md:px-20 xl:py-10 xl:px-40 bg-white">
             <h1 className="text-4xl mb-4 text-gray-800 font-title border-b-2 pb-2 border-yellow-500">
               {filteredRecipe.title}
             </h1>

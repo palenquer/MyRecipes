@@ -1,5 +1,4 @@
 import { useState } from "react";
-import ReactModal from "react-modal";
 import { Header } from "./components/Header";
 import { NewRecipeModal } from "./components/NewRecipeModal";
 import { RecipesProvider } from "./hooks/useRecipes";
@@ -10,8 +9,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { Home } from "./pages/Home";
 import { Recipe } from "./pages/Recipe";
 import { Page404 } from "./pages/Page404";
-
-ReactModal.setAppElement("#root");
 
 function App() {
   const [isNewRecipeModalOpen, setIsNewRecipeModalOpen] = useState(false);
