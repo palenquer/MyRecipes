@@ -73,7 +73,7 @@ export function NewRecipeModal({
 
   return (
     <Modal
-      className="w-11/12 max-w-2xl bg-gray-100 relative rounded-md z-10 p-4 overflow-auto"
+      className="w-full h-full max-w-2xl max-h-modal bg-gray-100 relative rounded-md z-10 p-4 overflow-auto "
       overlayClassName="react-modal-overlay"
       isOpen={isOpen}
       onRequestClose={onRequestClose}
