@@ -32,7 +32,7 @@ export function NewRecipeModal({
       );
       return;
     }
-    if (description.length > 300) {
+    if (description.length > 500) {
       toast.error("description cannot exceed 300 characters");
       return;
     }
@@ -48,7 +48,7 @@ export function NewRecipeModal({
       toast.error("Ingredients cannot exceed 300 characters");
       return;
     }
-    if (instructions.length > 300) {
+    if (instructions.length > 500) {
       toast.error("Instructions cannot exceed 300 characters");
       return;
     }
