@@ -40,8 +40,8 @@ export function NewRecipeModal({
       toast.error("Minutes must have at least 1 and cannot exceed 999");
       return;
     }
-    if (portions < 1 || portions > 999) {
-      toast.error("Portions must have at least 1 and cannot exceed 999");
+    if (portions < 1 || portions > 10) {
+      toast.error("Portions must have at least 1 and cannot exceed 10");
       return;
     }
     if (ingredients.length > 100) {
