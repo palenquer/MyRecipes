@@ -90,7 +90,7 @@ export function NewRecipeModal({
         onSubmit={handleCreateNewRecipe}
         className="p-4 flex gap-4 flex-col"
       >
-        <h2 className="font-title font-semibold text-yellow-500 text-3xl text-center mb-8">
+        <h2 className="font-title text-yellow-500 text-3xl text-center mb-8">
           New Recipe
         </h2>
 

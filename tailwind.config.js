@@ -5,7 +5,7 @@ module.exports = {
     extend: {},
     fontFamily: {
       'mont': ['Montserrat', 'sans-serif'],
-      'title': ['Viaoda Libre', 'cursive']
+      'title': ['Pacifico', 'cursive']
     },
   },
   variants: {

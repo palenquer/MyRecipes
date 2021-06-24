@@ -18,7 +18,6 @@ interface RecipesResponseBody {
 }
 
 interface RecipesRequestParams {
-  recipeId: number;
 }
 
 export const handlers = [
@@ -42,7 +41,7 @@ export const handlers = [
             {
               id: 0,
               title: "Sopa de Caramujo",
-              time: 2,
+              time: 120,
               portions: 4,
               description:
                 "Uma sopa feita de caramujos com molho de cogumelos.",
@@ -53,7 +52,7 @@ export const handlers = [
             {
               id: 1,
               title: "Churrasco de tatu",
-              time: 1,
+              time: 60,
               portions: 2,
               description:
                 "Um churrasquinho de tatu feito com muito amor e carinho.",
