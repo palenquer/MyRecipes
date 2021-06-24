@@ -44,9 +44,9 @@ export const handlers = [
               time: 120,
               portions: 4,
               description:
-                "Uma sopa feita de caramujos com molho de cogumelos.",
+                "Uma sopa magnífica feita de caramujos com molho de cogumelos.",
               instructions:
-                "Primeiro, coloque os caramujos em uma panela com água quente. Logo após, adicione o molho de cogumelos.",
+                "Primeiro, coloque os caramujos em uma panela com água quente. Logo após, adicione o molho de cogumelos. Por fim, sirva a sopa.",
               ingredients: "Caramujo, Cogumelo, Água",
             },
             {
@@ -55,10 +55,10 @@ export const handlers = [
               time: 60,
               portions: 2,
               description:
-                "Um churrasquinho de tatu feito com muito amor e carinho.",
+                "Um churrasquinho de tatu suculento feito com muita maestria.",
               instructions:
-                "Primeiro, espete a carne de tatu nos palitos de churrasco. Logo após, coloque os seus espetinhos na churrasqueira.",
-              ingredients: "Carne de Tatu, Sal",
+                "Primeiro, espete a carne de tatu nos palitos de churrasco. Logo após, tempere-o com sal e coloque os seus espetinhos na churrasqueira. Por fim, sirva os espetinhos.",
+              ingredients: "Carne de Tatu e Sal",
             },
           ],
         })
