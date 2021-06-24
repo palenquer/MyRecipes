@@ -33,7 +33,7 @@ export function NewRecipeModal({
       return;
     }
     if (description.length > 500) {
-      toast.error("description cannot exceed 300 characters");
+      toast.error("description cannot exceed 500 characters");
       return;
     }
     if (time < 1 || time > 999) {
@@ -49,7 +49,7 @@ export function NewRecipeModal({
       return;
     }
     if (instructions.length > 500) {
-      toast.error("Instructions cannot exceed 300 characters");
+      toast.error("Instructions cannot exceed 500 characters");
       return;
     }
 
