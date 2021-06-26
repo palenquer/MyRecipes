@@ -2,21 +2,30 @@ import { useRecipes } from "../hooks/useRecipes";
 import { useParams } from "react-router-dom";
 import { ClockIcon } from "@heroicons/react/outline";
 import { UserGroupIcon } from "@heroicons/react/solid";
+import { useHistory } from "react-router-dom";
 import recipeImg from "../assets/recipeImg.png";
 
 interface IdParams {
   id: string;
 }
 export function Recipe() {
-  const { recipes } = useRecipes();
+  const { recipes, removeRecipe } = useRecipes();
   const { id } = useParams<IdParams>();
+  const history = useHistory();
+
+  function handleClick() {
+    history.push("/");
+  }
 
   return (
     <main className="container mx-auto py-8 px-2 md:py-0 md:px-0 ">
       {recipes
         .filter((recipe) => recipe.id === Number(id))
         .map((filteredRecipe) => (
-          <section key={filteredRecipe.id} className="p-4 md:py-5 md:px-20 xl:py-10 xl:px-40 bg-white">
+          <section
+            key={filteredRecipe.id}
+            className="p-4 md:py-5 md:px-20 xl:py-10 xl:px-40 bg-white"
+          >
             <h1 className="text-4xl mb-4 text-gray-800 font-title border-b-2 pb-2 border-yellow-500">
               {filteredRecipe.title}
             </h1>
@@ -65,6 +74,10 @@ export function Recipe() {
             <button
               className="w-44 h-12 text-white rounded-md bg-red-500 hover:bg-red-700 mt-8 transition duration-300"
               type="button"
+              onClick={() => {
+                removeRecipe(filteredRecipe);
+                handleClick();
+              }}
             >
               Delete this recipe
             </button>

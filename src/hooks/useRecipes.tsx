@@ -1,4 +1,10 @@
-import { createContext, useEffect, useState, ReactNode, useContext } from "react";
+import {
+  createContext,
+  useEffect,
+  useState,
+  ReactNode,
+  useContext,
+} from "react";
 import { api } from "../services/api";
 import { toast } from "react-toastify";
 
@@ -25,6 +31,7 @@ interface RecipeInput {
 interface RecipesContextData {
   recipes: Recipe[];
   createRecipe: (recipe: RecipeInput) => Promise<void>;
+  removeRecipe: (recipe: RecipeInput) => Promise<void>;
 }
 
 interface RecipesProviderProps {
@@ -56,11 +63,29 @@ export function RecipesProvider({ children }: RecipesProviderProps) {
 
     setRecipes([...recipes, recipe]);
     localStorage.setItem("@my-recipes", JSON.stringify([...recipes, recipe]));
-    toast.info(`${recipe.title} recipe created`);
+    toast.success(`${recipe.title} recipe created`);
+  }
+
+  async function removeRecipe(recipeInput: RecipeInput) {
+    await api.delete(`/recipes/${recipeInput.id}`);
+
+    const updatedRecipe = [...recipes];
+    const recipeIndex = updatedRecipe.findIndex(
+      (recipe) => recipe.id === recipeInput.id
+    );
+
+    if (recipeIndex >= 0) {
+      updatedRecipe.splice(recipeIndex, 1);
+      setRecipes(updatedRecipe);
+      localStorage.setItem("@my-recipes", JSON.stringify(updatedRecipe));
+      toast.info(`Recipe removed`);
+    } else {
+      throw Error();
+    }
   }
 
   return (
-    <RecipesContext.Provider value={{ recipes, createRecipe }}>
+    <RecipesContext.Provider value={{ recipes, createRecipe, removeRecipe }}>
       {children}
     </RecipesContext.Provider>
   );

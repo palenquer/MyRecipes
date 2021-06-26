@@ -18,6 +18,7 @@ interface RecipesResponseBody {
 }
 
 interface RecipesRequestParams {
+  id: number;
 }
 
 export const handlers = [
@@ -30,10 +31,14 @@ export const handlers = [
     }
   ),
 
+  rest.delete("http://localhost:3000/recipes/:id", (req, res, ctx) => {
+    const { id } = req.params;
+    return res(ctx.delay(200), ctx.status(202, id));
+  }),
+
   rest.get<RecipesRequestBody, RecipesResponseBody, RecipesRequestParams>(
     "http://localhost:3000/recipes",
     (req, res, ctx) => {
-
       return res(
         ctx.status(200),
         ctx.json({
